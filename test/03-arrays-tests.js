@@ -142,7 +142,7 @@ describe('03-arrays-tasks', () => {
   });
 
 
-  it.optional('findAllOccurences should return the number of all occurences of specified item in an array', () => {
+  it.optional('findAllOccurrences should return the number of all occurrences of specified item in an array', () => {
     [
       {
         arr: [0, 0, 1, 1, 1, 2],
@@ -166,11 +166,11 @@ describe('03-arrays-tasks', () => {
         expected: 1,
       },
     ].forEach((data) => {
-      const actual = tasks.findAllOccurences(data.arr, data.item);
+      const actual = tasks.findAllOccurrences(data.arr, data.item);
       assert.equal(
         data.expected,
         actual,
-        `Number of occurences of ${JSON.stringify(data.item)} in ${JSON.stringify(data.arr)} is ${data.expected}, but actually ${actual})`,
+        `Number of occurrences of ${JSON.stringify(data.item)} in ${JSON.stringify(data.arr)} is ${data.expected}, but actually ${actual})`,
       );
     });
   });
