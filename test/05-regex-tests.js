@@ -33,7 +33,7 @@ describe('05-regex-tasks', () => {
   });
 
 
-  it.optional('getRegexForPitSpot should be implemeted according to task', () => {
+  it.optional('getRegexForPitSpot should be implemented according to task', () => {
     const result = tasks.getRegexForPitSpot();
 
     ['pit', 'spot', 'spate', 'slap two', 'respite'].forEach((str) => {
