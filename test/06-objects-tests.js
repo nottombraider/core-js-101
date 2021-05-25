@@ -97,14 +97,14 @@ describe('06-objects-tasks', () => {
       assert.deepEqual(
         actual,
         data.expected,
-        'fromJson method shoud restore all properties from json',
+        'fromJson method should restore all properties from json',
       );
       assert.equal(
         // eslint-disable-next-line no-proto
         actual.__proto__,
         // eslint-disable-next-line no-proto
         data.expected.__proto__,
-        'fromJson method shoud restore type from prototype argument',
+        'fromJson method should restore type from prototype argument',
       );
     });
   });
