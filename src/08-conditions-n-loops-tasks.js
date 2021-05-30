@@ -272,8 +272,25 @@ function reverseInteger(num) {
  *   5436468789016589 => false
  *   4916123456789012 => false
  */
-function isCreditCardNumber(/* ccn */) {
-  throw new Error('Not implemented');
+function isCreditCardNumber(ccn) {
+  let sum = 0;
+  const cnnStr = String(ccn);
+
+  for (let i = 0; i < cnnStr.length; i += 1) {
+    let currNum = Number(cnnStr[i]);
+
+    if ((cnnStr.length - i) % 2 === 0) {
+      currNum *= 2;
+
+      if (currNum > 9) {
+        currNum -= 9;
+      }
+    }
+
+    sum += currNum;
+  }
+
+  return sum % 10 === 0;
 }
 
 /**
@@ -290,8 +307,15 @@ function isCreditCardNumber(/* ccn */) {
  *   10000 ( 1+0+0+0+0 = 1 ) => 1
  *   165536 (1+6+5+5+3+6 = 26,  2+6 = 8) => 8
  */
-function getDigitalRoot(/* num */) {
-  throw new Error('Not implemented');
+function getDigitalRoot(num) {
+  let digitalRoot = num;
+  const getSum = (number) => String(number).split('').reduce((acc, item) => Number(acc) + Number(item));
+
+  while (String(digitalRoot).length > 1) {
+    digitalRoot = getSum(digitalRoot);
+  }
+
+  return digitalRoot;
 }
 
 
@@ -316,8 +340,37 @@ function getDigitalRoot(/* num */) {
  *   '{)' = false
  *   '{[(<{[]}>)]}' = true
  */
-function isBracketsBalanced(/* str */) {
-  throw new Error('Not implemented');
+function isBracketsBalanced(str) {
+  const bracketsMap = {
+    '[': ']',
+    '{': '}',
+    '<': '>',
+    '(': ')',
+  };
+
+  if (!str) return true;
+
+  if (str.length % 2 !== 0 || Object.values(bracketsMap).includes(str[0])) return false;
+
+  const stack = [];
+
+  for (let i = 0; i < str.length; i += 1) {
+    const bracket = str[i];
+
+    if (Object.keys(bracketsMap).includes(bracket)) {
+      stack.push(bracket);
+    } else {
+      const lastBracket = stack[stack.length - 1];
+
+      if (bracket === bracketsMap[lastBracket]) {
+        stack.pop();
+      } else {
+        return false;
+      }
+    }
+  }
+
+  return stack.length === 0;
 }
 
 
@@ -341,13 +394,13 @@ function isBracketsBalanced(/* str */) {
  *    365, 4  => '11231'
  *    365, 10 => '365'
  */
-function toNaryString(/* num, n */) {
-  throw new Error('Not implemented');
+function toNaryString(num, n) {
+  return num.toString(n);
 }
 
 
 /**
- * Returns the commom directory path for specified array of full filenames.
+ * Returns the common directory path for specified array of full filenames.
  *
  * @param {array} pathes
  * @return {string}
@@ -358,8 +411,24 @@ function toNaryString(/* num, n */) {
  *   ['/web/assets/style.css', '/.bin/mocha',  '/read.me'] => '/'
  *   ['/web/favicon.ico', '/web-scripts/dump', '/webalizer/logs'] => '/'
  */
-function getCommonDirectoryPath(/* pathes */) {
-  throw new Error('Not implemented');
+function getCommonDirectoryPath(pathes) {
+  const samePathType = new Set(pathes.map((path) => path.startsWith('/'))).size === 1;
+
+  if (!samePathType) return '';
+
+  const pathsDirs = pathes.map((path) => path.split('/'));
+  const firstPathDirs = pathsDirs[0];
+  const commonDirs = [];
+
+  for (let i = 0; i < firstPathDirs.length; i += 1) {
+    const isCommonDir = pathsDirs.every((pathDirs) => pathDirs[i] === firstPathDirs[i]);
+
+    if (!isCommonDir) break;
+
+    commonDirs.push(firstPathDirs[i]);
+  }
+
+  return `${commonDirs.join('/')}/`;
 }
 
 
@@ -381,8 +450,26 @@ function getCommonDirectoryPath(/* pathes */) {
  *                         [ 6 ]]
  *
  */
-function getMatrixProduct(/* m1, m2 */) {
-  throw new Error('Not implemented');
+function getMatrixProduct(m1, m2) {
+  const result = [];
+
+  for (let i = 0; i < m1.length; i += 1) {
+    const row = [];
+
+    for (let j = 0; j < m2[0].length; j += 1) {
+      let sum = 0;
+
+      for (let k = 0; k < m2.length; k += 1) {
+        sum += m1[i][k] * m2[k][j];
+      }
+
+      row.push(sum);
+    }
+
+    result.push(row);
+  }
+
+  return result;
 }
 
 
