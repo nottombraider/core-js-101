@@ -503,8 +503,48 @@ function getMatrixProduct(m1, m2) {
  *    [    ,   ,    ]]
  *
  */
-function evaluateTicTacToePosition(/* position */) {
-  throw new Error('Not implemented');
+function evaluateTicTacToePosition(position) {
+  const winningCombinations = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6],
+  ];
+  const board = position.reduce((acc, row, i) => {
+    if (row.length < 3 && i < 2) row.push(undefined);
+
+    return [...acc, ...row];
+  }, []);
+  let winner;
+  const getUserMoves = (moveType, boardArr) => boardArr
+    .reduce((acc, move, i) => ((move === moveType) ? [...acc, i] : acc), []);
+
+  if (board.every((item) => item === undefined)) return winner;
+
+  const xUserMoves = getUserMoves('X', board);
+  const oUserMoves = getUserMoves('0', board);
+
+  for (let i = 0; i < winningCombinations.length; i += 1) {
+    const winningCombination = winningCombinations[i];
+    const xUser = winningCombination.every((winMove) => xUserMoves.includes(winMove));
+    const oUser = winningCombination.every((winMove) => oUserMoves.includes(winMove));
+
+    if (xUser) {
+      winner = 'X';
+      break;
+    }
+
+    if (oUser) {
+      winner = '0';
+      break;
+    }
+  }
+
+  return winner;
 }
 
 
