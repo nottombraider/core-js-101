@@ -114,34 +114,90 @@ function fromJSON(proto, json) {
  *
  *  For more examples see unit tests.
  */
+const DEFAULT_CSS_SELECTOR = {
+  element: '',
+  id: '',
+  class: '',
+  attr: '',
+  pseudoClass: '',
+  pseudoElement: '',
+};
 
 const cssSelectorBuilder = {
-  element(/* value */) {
-    throw new Error('Not implemented');
+  cssSelector: { ...DEFAULT_CSS_SELECTOR },
+
+  element(value) {
+    if (cssSelectorBuilder.element.length) this.handleRepeat();
+
+    const elementBuilder = Object.create(cssSelectorBuilder);
+
+    elementBuilder.cssSelector.element = value;
+
+    return this;
   },
 
-  id(/* value */) {
-    throw new Error('Not implemented');
+  id(value) {
+    if (cssSelectorBuilder.id.length) this.handleRepeat();
+
+    const idBuilder = Object.create(cssSelectorBuilder);
+
+    idBuilder.cssSelector.id = `#${value}`;
+
+    return this;
   },
 
-  class(/* value */) {
-    throw new Error('Not implemented');
+  class(value) {
+    const classBuilder = Object.create(cssSelectorBuilder);
+
+    classBuilder.cssSelector.class += `.${value}`;
+
+    return this;
   },
 
-  attr(/* value */) {
-    throw new Error('Not implemented');
+  attr(value) {
+    const attrBuilder = Object.create(cssSelectorBuilder);
+
+    attrBuilder.cssSelector.attr = `[${value}]`;
+
+    return this;
   },
 
-  pseudoClass(/* value */) {
-    throw new Error('Not implemented');
+  pseudoClass(value) {
+    const pseudoClassBuilder = Object.create(cssSelectorBuilder);
+
+    pseudoClassBuilder.cssSelector.pseudoClass += `:${value}`;
+
+    return this;
   },
 
-  pseudoElement(/* value */) {
-    throw new Error('Not implemented');
+  pseudoElement(value) {
+    if (cssSelectorBuilder.pseudoElement.length) this.handleRepeat();
+
+    const pseudoElementBuilder = Object.create(cssSelectorBuilder);
+
+    pseudoElementBuilder.cssSelector.pseudoElement = `::${value}`;
+
+    return this;
   },
 
   combine(/* selector1, combinator, selector2 */) {
     throw new Error('Not implemented');
+  },
+
+  reset() {
+    this.cssSelector = { ...DEFAULT_CSS_SELECTOR };
+  },
+
+  handleRepeat() {
+    return new Error('Element, id and pseudo-element should not occur more then one time inside the selector');
+  },
+
+  stringify() {
+    const result = Object.values(this.cssSelector).join('');
+
+    this.reset();
+
+    return result;
   },
 };
 
