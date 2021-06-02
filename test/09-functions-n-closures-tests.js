@@ -36,7 +36,7 @@ describe('09-functions-n-closures-tasks', () => {
   });
 
 
-  it.optional('getPolynom should return the polynom with specified coefficients', () => {
+  it.optional('getPolynom should return the polynomial with specified coefficients', () => {
     [
       {
         polynom: tasks.getPolynom(2, 3, 5),
@@ -64,11 +64,11 @@ describe('09-functions-n-closures-tasks', () => {
       numberOfCalls += 1;
       return Math.random();
     };
-    const memoizer = tasks.memoize(fn);
-    const expected = memoizer();
+    const memorizer = tasks.memoize(fn);
+    const expected = memorizer();
     assert.equal(numberOfCalls, 1, 'memoize result should evaluate the specified function at first call');
     for (let i = 0; i < 10; i += 1) {
-      const actual = memoizer();
+      const actual = memorizer();
       assert.equal(actual, expected, 'memoize result should return the cached value at second and next calls');
       assert.equal(numberOfCalls, 1, 'memoize result should not evaluate the specified function at second and next calls');
     }
@@ -76,17 +76,17 @@ describe('09-functions-n-closures-tasks', () => {
 
 
   it.optional('retry method should try to evaluate the specified function several times', () => {
-    const maxAttemps = 3;
+    const maxAttempts = 3;
     const expected = 'expected';
-    let attemps = 0;
+    let attempts = 0;
 
     const fn = () => {
-      attemps += 1;
-      if (attemps < maxAttemps) throw new Error();
+      attempts += 1;
+      if (attempts < maxAttempts) throw new Error();
       return expected;
     };
 
-    const actual = tasks.retry(fn, maxAttemps)();
+    const actual = tasks.retry(fn, maxAttempts)();
     assert.equal(actual, expected);
   });
 
@@ -106,7 +106,7 @@ describe('09-functions-n-closures-tasks', () => {
       log,
       'cos(3.141592653589793) starts\n'
            + 'cos(3.141592653589793) ends\n',
-      'logger function shoud log the start and end of the specified function',
+      'logger function should log the start and end of the specified function',
     );
   });
 
@@ -119,7 +119,7 @@ describe('09-functions-n-closures-tasks', () => {
       assert.equal(
         log,
         'testLogger(["expected","test",1],0) starts\n',
-        'logger function shoud log the start of specified function before calling',
+        'logger function should log the start of specified function before calling',
       );
       isCalling = true;
       return param[index];
@@ -139,7 +139,7 @@ describe('09-functions-n-closures-tasks', () => {
       log,
       'testLogger(["expected","test",1],0) starts\n'
       + 'testLogger(["expected","test",1],0) ends\n',
-      'logger function shoud log the end of specified function after calling',
+      'logger function should log the end of specified function after calling',
     );
   });
 

@@ -13,7 +13,7 @@ describe('08-conditions-n-loops-tasks', () => {
       assert.equal(
         actual,
         num,
-        `getFizzBuzz shoud return ${num} for ${num}, but actually ${actual}`,
+        `getFizzBuzz should return ${num} for ${num}, but actually ${actual}`,
       );
     });
 
@@ -27,7 +27,7 @@ describe('08-conditions-n-loops-tasks', () => {
       assert.equal(
         actual,
         'Fizz',
-        `getFizzBuzz shoud return 'Fizz' for ${num}, but actually ${actual}`,
+        `getFizzBuzz should return 'Fizz' for ${num}, but actually ${actual}`,
       );
     });
 
@@ -38,7 +38,7 @@ describe('08-conditions-n-loops-tasks', () => {
       assert.equal(
         actual,
         'Buzz',
-        `getFizzBuzz shoud return 'Buzz' for ${num}, but actually ${actual}`,
+        `getFizzBuzz should return 'Buzz' for ${num}, but actually ${actual}`,
       );
     });
 
@@ -49,13 +49,13 @@ describe('08-conditions-n-loops-tasks', () => {
       assert.equal(
         actual,
         'FizzBuzz',
-        `getFizzBuzz shoud return 'FizzBuzz' for ${num}, but actually ${actual}`,
+        `getFizzBuzz should return 'FizzBuzz' for ${num}, but actually ${actual}`,
       );
     });
   });
 
 
-  it.optional('getFactorial should return the functorial of given number', () => {
+  it.optional('getFactorial should return the factorial of given number', () => {
     [
       { n: 1, expected: 1 },
       { n: 5, expected: 120 },
