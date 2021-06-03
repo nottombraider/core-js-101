@@ -2,6 +2,9 @@
 
 Fully implemented on June 2, 2021
 
+100 passing
+1 pending
+
 ## Task
 
 The task is to implement functions on different Core JS topics. There are nine modules with different tasks. Each module consists of tasks for specified topic:
