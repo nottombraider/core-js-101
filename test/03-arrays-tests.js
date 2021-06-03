@@ -20,7 +20,7 @@ describe('03-arrays-tasks', () => {
       },
     ].forEach((data) => {
       const actual = tasks.findElement(data.arr, data.value);
-      assert.equal(
+      assert.strictEqual(
         data.expected,
         actual,
         `Index of '${data.value}' inside of [${data.arr}] = ${data.expected}, but actually ${actual}`,
@@ -167,7 +167,7 @@ describe('03-arrays-tasks', () => {
       },
     ].forEach((data) => {
       const actual = tasks.findAllOccurrences(data.arr, data.item);
-      assert.equal(
+      assert.strictEqual(
         data.expected,
         actual,
         `Number of occurrences of ${JSON.stringify(data.item)} in ${JSON.stringify(data.arr)} is ${data.expected}, but actually ${actual})`,
@@ -296,7 +296,7 @@ describe('03-arrays-tasks', () => {
       },
     ].forEach((data) => {
       const actual = tasks.toCsvText(data.arr);
-      assert.equal(
+      assert.strictEqual(
         data.expected,
         actual,
       );
@@ -446,7 +446,7 @@ describe('03-arrays-tasks', () => {
       },
     ].forEach((data) => {
       const actual = tasks.getPositivesCount(data.arr);
-      assert.equal(
+      assert.strictEqual(
         data.expected,
         actual,
         `Test failed for argument [${data.arr}]`,
@@ -549,7 +549,7 @@ describe('03-arrays-tasks', () => {
       },
     ].forEach((data) => {
       const actual = tasks.toStringList(data.arr);
-      assert.equal(
+      assert.strictEqual(
         data.expected,
         actual,
       );
@@ -808,7 +808,7 @@ describe('03-arrays-tasks', () => {
       },
     ].forEach((data) => {
       const actual = tasks.getElementByIndexes(data.arr, data.indexes);
-      assert.equal(
+      assert.strictEqual(
         data.expected,
         actual,
         `getElementByIndexes(${JSON.stringify(data.arr)}, ${JSON.stringify(data.indexes)}) returns an incorrect result. Expected ${data.expected}, but actual ${actual}`,

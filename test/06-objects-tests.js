@@ -7,7 +7,7 @@ describe('06-objects-tasks', () => {
   it.optional('Rectangle constructor should return the rectangle object', () => {
     const rect = new tasks.Rectangle(10, 20);
 
-    assert.equal(
+    assert.strictEqual(
       typeof rect,
       'object',
       'Result of Rectangle constructor should be an object',
@@ -16,7 +16,7 @@ describe('06-objects-tasks', () => {
       Object.prototype.hasOwnProperty.call(rect, 'width'),
       'Result of Rectangle constructor should be an object with "width" property',
     );
-    assert.equal(
+    assert.strictEqual(
       rect.width,
       10,
       'Result of new Rectangle(10,20) should be an object with "width" property equals to 10',
@@ -25,22 +25,22 @@ describe('06-objects-tasks', () => {
       Object.prototype.hasOwnProperty.call(rect, 'height'),
       'Result of new Rectangle(10,20) should be an object with "height" property',
     );
-    assert.equal(
+    assert.strictEqual(
       rect.width,
       10,
       'Result of new Rectangle(10,20) should be an object with "height" property equals to 20',
     );
-    assert.equal(
+    assert.strictEqual(
       typeof rect.getArea,
       'function',
       'Result of Rectangle constructor should be an object with "getArea" method',
     );
-    assert.equal(
+    assert.strictEqual(
       rect.getArea(),
       200,
       'Result of (new Rectangle(10,20)).getArea() should return the correct area of specified rectangle',
     );
-    assert.equal(
+    assert.strictEqual(
       (new tasks.Rectangle(3, 8)).getArea(),
       24,
       'Result of (new Rectangle(3,8)).getArea() should return the correct area of specified rectangle',
@@ -58,7 +58,7 @@ describe('06-objects-tasks', () => {
         expected: '{"height":10,"width":20}',
       },
     ].forEach((data) => {
-      assert.equal(
+      assert.strictEqual(
         tasks.getJSON(data.obj),
         data.expected,
       );
@@ -99,7 +99,7 @@ describe('06-objects-tasks', () => {
         data.expected,
         'fromJson method should restore all properties from json',
       );
-      assert.equal(
+      assert.strictEqual(
         // eslint-disable-next-line no-proto
         actual.__proto__,
         // eslint-disable-next-line no-proto
@@ -114,71 +114,71 @@ describe('06-objects-tasks', () => {
     const builder = tasks.cssSelectorBuilder;
 
     // Test simple selectors
-    assert.equal(
+    assert.strictEqual(
       builder.element('div').stringify(),
       'div',
     );
-    assert.equal(
+    assert.strictEqual(
       builder.id('nav-bar').stringify(),
       '#nav-bar',
     );
-    assert.equal(
+    assert.strictEqual(
       builder.class('warning').stringify(),
       '.warning',
     );
-    assert.equal(
+    assert.strictEqual(
       builder.attr('href$=".png"').stringify(),
       '[href$=".png"]',
     );
-    assert.equal(
+    assert.strictEqual(
       builder.pseudoClass('invalid').stringify(),
       ':invalid',
     );
-    assert.equal(
+    assert.strictEqual(
       builder.pseudoElement('first-letter').stringify(),
       '::first-letter',
     );
 
     // Test complex selectors
-    assert.equal(
+    assert.strictEqual(
       builder.element('li').id('main').stringify(),
       'li#main',
     );
-    assert.equal(
+    assert.strictEqual(
       builder.element('div').class('container').stringify(),
       'div.container',
     );
-    assert.equal(
+    assert.strictEqual(
       builder.element('div').class('container').class('clickable').stringify(),
       'div.container.clickable',
     );
-    assert.equal(
+    assert.strictEqual(
       builder.id('main').class('container').class('editable').stringify(),
       '#main.container.editable',
     );
-    assert.equal(
+    assert.strictEqual(
       builder.element('li').id('home-menu').class('active').stringify(),
       'li#home-menu.active',
     );
-    assert.equal(
+    assert.strictEqual(
       builder.class('container').class('nav-bar').class('navbar-inverted').stringify(),
       '.container.nav-bar.navbar-inverted',
     );
-    assert.equal(
+    assert.strictEqual(
       builder.element('a').attr('href$=".png"').pseudoClass('focus').stringify(),
       'a[href$=".png"]:focus',
     );
-    assert.equal(
+    assert.strictEqual(
       builder.element('p').pseudoClass('first-of-type').pseudoElement('first-letter').stringify(),
       'p:first-of-type::first-letter',
     );
-    assert.equal(
+    assert.strictEqual(
       builder.element('input').pseudoClass('focus').pseudoClass('invalid').stringify(),
       'input:focus:invalid',
     );
 
     // Test combined selectors
-    assert.equal(
+    assert.strictEqual(
       builder.combine(
         builder.element('p').pseudoClass('focus'),
         '>',
@@ -187,7 +187,7 @@ describe('06-objects-tasks', () => {
       'p:focus > a[href$=".png"]',
     );
 
-    assert.equal(
+    assert.strictEqual(
       builder.combine(
         builder.element('p').id('introduction'),
         '~',
@@ -196,7 +196,7 @@ describe('06-objects-tasks', () => {
       'p#introduction ~ img[href$=".png"]',
     );
 
-    assert.equal(
+    assert.strictEqual(
       builder.combine(
         builder.id('charter1').class('touch'),
         '+',
@@ -205,7 +205,7 @@ describe('06-objects-tasks', () => {
       '#charter1.touch + table',
     );
 
-    assert.equal(
+    assert.strictEqual(
       builder.combine(
         builder.element('ul').class('animable'),
         ' ',
@@ -214,7 +214,7 @@ describe('06-objects-tasks', () => {
       'ul.animable   li:nth-of-type(1)',
     );
 
-    assert.equal(
+    assert.strictEqual(
       builder.combine(
         builder.element('div').id('main').class('container').class('draggable'),
         '+',

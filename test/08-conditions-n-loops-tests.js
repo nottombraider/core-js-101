@@ -10,7 +10,7 @@ describe('08-conditions-n-loops-tasks', () => {
       73, 74, 76, 77, 79, 82, 83, 86, 88, 89, 91, 92, 94, 97, 98,
     ].forEach((num) => {
       const actual = tasks.getFizzBuzz(num);
-      assert.equal(
+      assert.strictEqual(
         actual,
         num,
         `getFizzBuzz should return ${num} for ${num}, but actually ${actual}`,
@@ -24,7 +24,7 @@ describe('08-conditions-n-loops-tasks', () => {
       93, 96, 99,
     ].forEach((num) => {
       const actual = tasks.getFizzBuzz(num);
-      assert.equal(
+      assert.strictEqual(
         actual,
         'Fizz',
         `getFizzBuzz should return 'Fizz' for ${num}, but actually ${actual}`,
@@ -35,7 +35,7 @@ describe('08-conditions-n-loops-tasks', () => {
       5, 10, 20, 25, 35, 40, 50, 55, 65, 70, 80, 85, 95, 100,
     ].forEach((num) => {
       const actual = tasks.getFizzBuzz(num);
-      assert.equal(
+      assert.strictEqual(
         actual,
         'Buzz',
         `getFizzBuzz should return 'Buzz' for ${num}, but actually ${actual}`,
@@ -46,7 +46,7 @@ describe('08-conditions-n-loops-tasks', () => {
       15, 30, 45, 60, 75, 90,
     ].forEach((num) => {
       const actual = tasks.getFizzBuzz(num);
-      assert.equal(
+      assert.strictEqual(
         actual,
         'FizzBuzz',
         `getFizzBuzz should return 'FizzBuzz' for ${num}, but actually ${actual}`,
@@ -62,7 +62,7 @@ describe('08-conditions-n-loops-tasks', () => {
       { n: 10, expected: 3628800 },
     ].forEach((data) => {
       const actual = tasks.getFactorial(data.n);
-      assert.equal(
+      assert.strictEqual(
         actual,
         data.expected,
         `${data.n}! = ${data.expected}, but actual ${actual}`,
@@ -78,7 +78,7 @@ describe('08-conditions-n-loops-tasks', () => {
       { n1: -1, n2: 1, expected: 0 },
     ].forEach((data) => {
       const actual = tasks.getSumBetweenNumbers(data.n1, data.n2);
-      assert.equal(
+      assert.strictEqual(
         actual,
         data.expected,
         `Sum of [${data.n1},${data.n2}] = ${data.expected}, but actual ${actual}`,
@@ -100,7 +100,7 @@ describe('08-conditions-n-loops-tasks', () => {
           data.sides[idx[1]],
           data.sides[idx[2]],
         );
-        assert.equal(
+        assert.strictEqual(
           actual,
           data.expected,
           `Triangle from [${data.sides.toString()}]: expected ${data.expected} but actual ${actual}`,
@@ -170,7 +170,7 @@ describe('08-conditions-n-loops-tasks', () => {
         expected: false,
       },
     ].forEach((data) => {
-      assert.equal(
+      assert.strictEqual(
         tasks.doRectanglesOverlap(data.rect1, data.rect2),
         data.expected,
         `doRectanglesOverlap(\n   ${JSON.stringify(data.rect1)},\n   ${JSON.stringify(data.rect2)}\n): expected ${data.expected}`,
@@ -211,7 +211,7 @@ describe('08-conditions-n-loops-tasks', () => {
         expected: false,
       },
     ].forEach((data) => {
-      assert.equal(
+      assert.strictEqual(
         tasks.isInsideCircle(data.circle, data.point),
         data.expected,
         `isInsideCircle(\n   ${JSON.stringify(data.circle)},\n   ${JSON.stringify(data.point)}\n): expected ${data.expected}`,
@@ -227,7 +227,7 @@ describe('08-conditions-n-loops-tasks', () => {
       { str: 'entente', expected: null },
     ].forEach((data) => {
       const actual = tasks.findFirstSingleChar(data.str);
-      assert.equal(
+      assert.strictEqual(
         actual,
         data.expected,
         `First single char of '${data.str}' = '${data.expected}', but actual '${actual}'`,
@@ -272,7 +272,7 @@ describe('08-conditions-n-loops-tasks', () => {
     ].forEach((data) => {
       const actual = tasks
         .getIntervalString(data.a, data.b, data.isStartIncluded, data.isEndIncluded);
-      assert.equal(
+      assert.strictEqual(
         actual,
         data.expected,
         `getIntervalString(${data.a}, ${data.b}, ${data.isStartIncluded}, ${data.isEndIncluded}) shoud return '${data.expected}', but actually '${actual}'`,
@@ -289,7 +289,7 @@ describe('08-conditions-n-loops-tasks', () => {
       { str: 'noon', expected: 'noon' },
     ].forEach((data) => {
       const actual = tasks.reverseString(data.str);
-      assert.equal(
+      assert.strictEqual(
         actual,
         data.expected,
         `Reversed '${data.str}' = '${data.expected}', but actual '${actual}'`,
@@ -306,7 +306,7 @@ describe('08-conditions-n-loops-tasks', () => {
       { num: 34143, expected: 34143 },
     ].forEach((data) => {
       const actual = tasks.reverseInteger(data.num);
-      assert.equal(
+      assert.strictEqual(
         actual,
         data.expected,
         `Reversed ${data.num} = ${data.expected}, but actual ${actual}`,
@@ -369,7 +369,7 @@ describe('08-conditions-n-loops-tasks', () => {
       { num: 165536, expected: 8 },
     ].forEach((data) => {
       const actual = tasks.getDigitalRoot(data.num);
-      assert.equal(
+      assert.strictEqual(
         actual,
         data.expected,
         `GetDigitalRoot(${data.num}) = ${data.expected}, but actual ${actual}`,
@@ -416,7 +416,7 @@ describe('08-conditions-n-loops-tasks', () => {
       { num: 365, n: 10, expected: '365' },
     ].forEach((data) => {
       const actual = tasks.toNaryString(data.num, data.n);
-      assert.equal(
+      assert.strictEqual(
         actual,
         data.expected,
         `${data.num} with radix ${data.n} = ${data.expected}, but actual ${actual}`,
@@ -442,7 +442,7 @@ describe('08-conditions-n-loops-tasks', () => {
       },
     ].forEach((data) => {
       const actual = tasks.getCommonDirectoryPath(data.pathes, data.n);
-      assert.equal(
+      assert.strictEqual(
         actual,
         data.expected,
         `Common directory path fo [${data.pathes}] = ${data.expected}, but actual ${actual}`,
@@ -543,7 +543,7 @@ describe('08-conditions-n-loops-tasks', () => {
     ],
     ].forEach((data) => {
       const actual = tasks.evaluateTicTacToePosition(data);
-      assert.equal(
+      assert.strictEqual(
         actual,
         X,
         `Position: \n${positionToSting(data)}\n  The winner is X, but actually '${actual}'`,
@@ -585,7 +585,7 @@ describe('08-conditions-n-loops-tasks', () => {
     ],
     ].forEach((data) => {
       const actual = tasks.evaluateTicTacToePosition(data);
-      assert.equal(
+      assert.strictEqual(
         actual,
         O,
         `Position: \n${positionToSting(data)}\n  The winner is O, but actually '${actual}'`,
@@ -615,7 +615,7 @@ describe('08-conditions-n-loops-tasks', () => {
     ],
     ].forEach((data) => {
       const actual = tasks.evaluateTicTacToePosition(data);
-      assert.equal(
+      assert.strictEqual(
         actual,
         undefined,
         `Position: \n${positionToSting(data)}\n  The winner is undefined, but actually '${actual}'`,

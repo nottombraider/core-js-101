@@ -26,7 +26,7 @@ describe('07-promises-tasks', () => {
 
     // answer 1
     answer1.then((value) => {
-      assert.equal(
+      assert.strictEqual(
         value,
         'Hooray!!! She said "Yes"!',
         'if parameter is "true" Promise should be resolved with value === \'Hooray!!! She said "Yes"!\'',
@@ -37,7 +37,7 @@ describe('07-promises-tasks', () => {
 
       // answer 2
     }).then(() => answer2).then((value) => {
-      assert.equal(
+      assert.strictEqual(
         value,
         'Oh no, she said "No".',
         'if parameter is "false" Promise should be resolved with value === \'Oh no, she said "No".\'',
@@ -58,7 +58,7 @@ describe('07-promises-tasks', () => {
       .catch((error) => {
         const errorMessage = error instanceof Error ? error : defaultRejectionMessage;
 
-        assert.equal(
+        assert.strictEqual(
           errorMessage.message,
           'Wrong parameter is passed! Ask her again.',
           'if parameter is not boolean Promise should be rejected with Error(\'Wrong parameter is passed! Ask her again.\')',
@@ -95,7 +95,7 @@ describe('07-promises-tasks', () => {
     // result 1
     result1.then((array) => {
       array.forEach((item, idx) => {
-        assert.equal(
+        assert.strictEqual(
           item,
           arrayForPromise[idx],
           'array\'s items shouldn\'t be Promises objects!',
@@ -108,7 +108,7 @@ describe('07-promises-tasks', () => {
     }).then(() => result2).catch((error) => {
       const errorMessage = error instanceof Error ? error : defaultRejectionMessage;
 
-      assert.equal(
+      assert.strictEqual(
         errorMessage.message,
         'Predictable Rejection 0',
         'should reject with Error was given from the first rejected Promise in array!',
@@ -150,7 +150,7 @@ describe('07-promises-tasks', () => {
 
     // result 1
     result1.then((value) => {
-      assert.equal(
+      assert.strictEqual(
         value,
         'I\'m first!',
         'getFastestPromise should return Promise that was resolved first!',
@@ -167,7 +167,7 @@ describe('07-promises-tasks', () => {
     })
       .catch((error) => {
         const errorMessage = error instanceof Error ? error : defaultRejectionMessage;
-        assert.equal(
+        assert.strictEqual(
           errorMessage.message,
           'I\'m not second!',
           'should reject with Error was given from the first rejected Promise in array!',
@@ -222,17 +222,17 @@ describe('07-promises-tasks', () => {
 
     // result 1
     result1.then((value) => {
-      assert.equal(
+      assert.strictEqual(
         value instanceof Promise,
         false,
         'result value shouldn\'t be Promise object!',
       );
-      assert.equal(
+      assert.strictEqual(
         Array.isArray(value),
         false,
         'result value shouldn\'t be Array!',
       );
-      assert.equal(
+      assert.strictEqual(
         value,
         lorem,
         'result value should be equal value that could be calculated by reducing array with method action!',
