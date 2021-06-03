@@ -184,7 +184,11 @@ function isInsideCircle({ center, radius }, point) {
  *   'entente' => null
  */
 function findFirstSingleChar(str) {
-  return str.split('').find((char) => str.toLowerCase().indexOf(char) === str.toLowerCase().lastIndexOf(char));
+  const firstSingleChar = str
+    .split('')
+    .find((char) => str.toLowerCase().indexOf(char) === str.toLowerCase().lastIndexOf(char));
+
+  return firstSingleChar || null;
 }
 
 
